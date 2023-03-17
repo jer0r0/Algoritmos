@@ -1,5 +1,3 @@
-// Online C++ Compiler - Build, Compile and Run your C++ programs online in your favorite browser
-
 #include<iostream>
 
 using namespace std;
@@ -203,6 +201,18 @@ public:
             }
         }
     }
+    
+    void shell_sort(){
+        for (int gap = size/2; gap > 0; gap /= 2){
+            for (int i = gap; i < size; i += 1){
+                int temp = v[i];
+                int j;            
+                for (j = i; j >= gap && v[j - gap] > temp; j -= gap)
+                    v[j] = v[j - gap];
+                v[j] = temp;
+                }
+            }
+    }
 
     
 };
@@ -211,7 +221,7 @@ int main()
 {
     
     Vector<int> v = Vector<int>();
-    
+    /*
     for(int i = 0; i<=5; i++){
         v.add(i);
     }
@@ -255,7 +265,21 @@ int main()
     v.insertion_sort();
     v.print();
     cout<<endl;
-
+    */
+    
+    /*
+    v.add(17);
+    v.add(4);
+    v.add(15);
+    v.add(9);
+    v.add(22);
+    v.add(21);
+    v.add(52);
+    v.add(2);
+    v.add(19);
+    v.print();
+    v.shell_sort();
+    v.print();*/
     
   
     
