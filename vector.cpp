@@ -1,3 +1,5 @@
+// Online C++ Compiler - Build, Compile and Run your C++ programs online in your favorite browser
+
 #include<iostream>
 
 using namespace std;
@@ -148,28 +150,27 @@ public:
     
     void print(){
         for(int i = 0; i < size; i++){
-            cout<<v[i]<<"\t";
-        }
+            cout<<v[i]<<"\t";}
         cout<<"\n";
-
     }
     
     void bubble_sort() {
-      bool s = true;
-      while(s){
-        s = false;
-        for(int i = 0; i < size-1; i++){
+      
+      for(int j = 0; j<size-1;j++ ){
+        
+        for(int i = 0; i < (size-1)-j; i++){
           if(v[i] > v[i+1]){
-    	int dummy = v[i];
-    	v[i] = v[i+1];
-    	v[i+1] = dummy;
-    	s = true;
+            
+        	int dummy = v[i];
+        	v[i] = v[i+1];
+        	v[i+1] = dummy;
+        	
           }
         }
       }
     }
     
-    void selection_sort() {
+    void select_sort() {
         int menor, menor_i, temp; 
         for(int j = 0; j<size-1;j++){
             menor = v[j];
@@ -178,6 +179,12 @@ public:
                 if(v[i]< menor){
                     menor=v[i];
                     menor_i = i;
+                    for(int i = 0; i < size; i++){
+                    //
+                    cout<<v[i]<<"\t";
+                    }
+                    cout<<"\n";
+                    //
                 }
             }
             if(j!=menor_i){
@@ -188,11 +195,17 @@ public:
         }
     }
     
-    void insertion_sort(){
+    void insert_sort(){
         for(int i = 1; i < size; ++i){
             int a = i;
             int b = i-1;
             while(v[b] > v[a]){
+                //
+                for(int i = 0; i < size; i++){
+                cout<<v[i]<<"\t";
+                }
+                cout<<"\n";
+                //
                 int temp = v[a];
                 v[a]=v[b];
                 v[b]= temp; 
@@ -206,9 +219,11 @@ public:
         for (int gap = size/2; gap > 0; gap /= 2){
             for (int i = gap; i < size; i += 1){
                 int temp = v[i];
-                int j;            
-                for (j = i; j >= gap && v[j - gap] > temp; j -= gap)
+                int j;
+                for (j = i; j >= gap && v[j - gap] > temp; j -= gap){
                     v[j] = v[j - gap];
+                }
+                
                 v[j] = temp;
                 }
             }
@@ -221,28 +236,25 @@ int main()
 {
     
     Vector<int> v = Vector<int>();
-    /*
-    for(int i = 0; i<=5; i++){
-        v.add(i);
-    }
-    v.print();
-    cout<<"\n";
-    
-    v.insert(2,100);
-    v.insert(4,150);
-    v.insert(6,200);
-    v.insert(8,250);
-    
+    v.add(5);
+    v.add(3);
+    v.add(19);
+    v.add(12);
+    v.add(21);
+    v.add(4);
+    v.add(1);
+    v.add(7);
+  
 
     v.print();
     cout<<"\n";
     
     
-    cout<<"Usando Bubble Sort"<<endl;
-    v.bubble_sort();
+    cout<<"Usando shell Sort"<<endl;
+    v.shell_sort();
     v.print();
     cout<<endl; 
-        
+        /*
     cout<<"Insertando los numeros 300,350,400,450"<<"\n"<<endl;
     v.insert(2,300);
     v.insert(4,350);
@@ -280,7 +292,13 @@ int main()
     v.print();
     v.shell_sort();
     v.print();*/
-    
+    /*
+    Vector<char> l = Vector<char>();
+    l.add('g');
+    l.add('o');l.add('o');l.add('g');l.add('l');l.add('e');
+    l.print();
+    l.bubble_sort();
+    l.print();*/
   
     
     
