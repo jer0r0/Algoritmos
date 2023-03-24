@@ -228,79 +228,83 @@ public:
                 }
             }
     }
+    
+    void max_heap(int n, int i){
+        int temp;
+        int largest = i;
+        int der = 2*(i+1);
+        int izq = 2*(i+1)-1;
+        
+        if(izq < n && v[izq] > v[largest]){
+            largest = izq;
+        }
+        if(der < n && v[der] > v[largest]){
+            largest = der;
+        }
+        if(largest != i){
+            temp = v[largest];
+            v[largest] = v[i];
+            v[i] = temp;
+            max_heap(n,largest);
+        }
+    }
 
+    void heap_sort(){
+        int center = (size/2)-1;
+        int temp;
+        for(int i=center; i>=0; i--){
+            max_heap(size,i);
+        }
+        for(int i=1; i<size; i++){
+            temp = v[0];
+            v[0] = v[size-i];
+            v[size-i] = temp;
+            max_heap(size-i,0);
+        }
+    }   
+    int partition( int ini, int fin){
+        int i = ini-1;
+        int j= 0;
+        int pivot = v[fin];
+         
+        for(j = ini; j<=fin; j++){
+            if(v[j]<=pivot){
+                i++;
+                int temp = v[j];
+                v[j] = v[i];
+                v[i] = temp;
+                
+            }
+        }
+        return i;
+         
+     }
+     
+     void quick_sort_ini( int ini , int fin){
+         if(ini<fin){
+           int i = partition(ini, fin);
+             quick_sort_ini(ini, i-1);
+             quick_sort_ini(i+1, fin);
+         }
+     }
+     void quick_sort(){
+         quick_sort_ini(0, size-1);
+     }
+ 
     
 };
 
 int main()
 {
-    
+    srand(5411);
     Vector<int> v = Vector<int>();
-    v.add(5);
-    v.add(3);
-    v.add(19);
-    v.add(12);
-    v.add(21);
-    v.add(4);
-    v.add(1);
-    v.add(7);
-  
-
+    int n = 10;
+    for(int i=0; i<n; i++){
+        v.add(rand()%100);
+    }
     v.print();
-    cout<<"\n";
-    
-    
-    cout<<"Usando shell Sort"<<endl;
-    v.shell_sort();
+    v.quick_sort();
     v.print();
-    cout<<endl; 
-        /*
-    cout<<"Insertando los numeros 300,350,400,450"<<"\n"<<endl;
-    v.insert(2,300);
-    v.insert(4,350);
-    v.insert(6,400);
-    v.insert(8,450);
-    v.print();
-    cout<<endl;
-    cout<<"Usando selection_sort "<<endl;
-    v.selection_sort();
-    v.print();
-    cout<<endl;
-    cout<<"Insertando los numeros 500,550,600,650"<<"\n"<<endl;
-    v.insert(2,500);
-    v.insert(4,550);
-    v.insert(6,600);
-    v.insert(8,650);
-    v.print();
-    cout<<"\n";
-    cout<<"Usando insert_sort "<<endl;
-    v.insertion_sort();
-    v.print();
-    cout<<endl;
-    */
-    
-    /*
-    v.add(17);
-    v.add(4);
-    v.add(15);
-    v.add(9);
-    v.add(22);
-    v.add(21);
-    v.add(52);
-    v.add(2);
-    v.add(19);
-    v.print();
-    v.shell_sort();
-    v.print();*/
-    /*
-    Vector<char> l = Vector<char>();
-    l.add('g');
-    l.add('o');l.add('o');l.add('g');l.add('l');l.add('e');
-    l.print();
-    l.bubble_sort();
-    l.print();*/
-  
-    
     
     return 0;
 }
