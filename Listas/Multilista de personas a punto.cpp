@@ -78,6 +78,12 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, Point& b) {
 		return os << b.to_string();
 	}
+	friend std::ostream& operator<<(std::ostream& os, Point b) {
+		return os << b.to_string();
+	}
+	friend std::ostream& operator<<(std::ostream& os, Point* b) {
+		return os << b->to_string();
+	}
 
 };
 
