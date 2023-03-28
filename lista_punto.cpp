@@ -136,7 +136,7 @@ public:
         ptr = NULL;
         size = 0;
     }
-  
+    
     ~Lista(){
         Nodo<T>* temp = ptr;
         if(ptr != NULL){
@@ -188,6 +188,7 @@ public:
         
     }
     
+    
     void print(){
         if(ptr == NULL){//La lista está vacía
             cout<<"La lista está vacía"<<endl;
@@ -221,32 +222,33 @@ public:
 
 int main()
 {
-    Lista<int> l;
-    Lista <Point> p;
+    Lista <Point> po;
     Lista <float>  f;
-    l.print();
-    for(int i=0; i<10; i++){
-        l.add(i);
-    }
-    l.print();
-    l.insert(100,0);
-    l.insert(101,1);
-    l.insert(102,6);
-    l.insert(103,17);
-    l.print();
+    
+    int x, y;
+    Point p;
+    
+    cout<<"ingrese el valor de x del punto"<<endl;
+    cin>> x; 
+    p.setX(x);
+    cout<<"ingrese el valor de y del punto"<<endl;
+    cin>> y; 
+    p.setY(y);
+    
+   
+    
     
     for(int i = 0; i < 3; i++){
         for(int j = 3; j>0;j--){
-            p.add(Point(i,j));
+            po.add(Point(i,j));
         }
     }
-    
-    
-    for(int i = 0; i < 10 ;  i++){
-        p.
+    po.print();
+
+    for(int i = 0;  i <9;i++ ){
+        f.add(po.get(i)->get_dato().dist(p));
     }
-    
-    p.print();
+    f.print();
     
     
     
