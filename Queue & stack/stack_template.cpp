@@ -38,29 +38,6 @@ class Pila {
   int size() { return n_size; }
 
   void push(T d) {
-      /*
-   
-    Nodo<T>* nuevoNodo = new Nodo<T>(value);
-    nuevoNodo->setNext(nullptr);
-    
-    if (top == nullptr) {
-        top = nuevoNodo;
-    } else {
-        Nodo<T>* temp = top;
-        Nodo<T>* prev = nullptr;
-        while (temp != nullptr && value < temp->get()) {
-            prev = temp;
-            temp = temp->getNext();
-        }
-        nuevoNodo->next = temp;
-        if (prev == nullptr) {
-            top = nuevoNodo;
-        } else {
-            prev->next = nuevoNodo;
-        }
-    }
-    
-    n_size++;*/
     Nodo<T>* nuevoNodo = new Nodo<T>(d);
     nuevoNodo->setNext(ptr);
     ptr = nuevoNodo;
@@ -98,12 +75,25 @@ class Pila {
       cout << "La lista está vacía" << endl;
     } else {
       Nodo<T>* t = ptr;
+      T* elementos  = new T[n_size];
+      int i = 0;
+      while( t !=nullptr){
+          elementos[i++] = t->get();
+          t = t->getNext();
+      }
+      for(int j = i-1; j>= 0; j--){
+          cout<<elementos[j]<<" ";
+      }
+      cout<<endl;
+      delete[] elementos;
+      /*
       do {
         cout << "" << (*t).get() << "\t";
         t = t->getNext();
 
       } while (t != NULL);
       cout << endl;
+      */
     }
   }
 };
