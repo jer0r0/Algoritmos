@@ -53,7 +53,7 @@ class Cola {
     }
   }
   
-  int pop() {
+  T pop() {
       if(n_size == 0) throw invalid_argument("La cola esta vacia");
       
       Nodo<T>* n = ptr;
@@ -69,7 +69,7 @@ class Cola {
       return value;
   }
   
-  int peek() {
+  T peek() {
       if(n_size == 0) throw invalid_argument("La cola esta vacia");
       
       Nodo<T>* n = ptr;
@@ -106,8 +106,14 @@ int main() {
   c.push('h');
   c.push('e');
   c.push('l');
+  c.push('l');
+  c.push('o');
+
   c.print();
-  c.peek();
+  cout<<"Se eliminará el dato: "<<c.pop()<<endl;
+  cout<<"Se eliminará el dato: "<<c.pop()<<endl;
+  cout<<"Se eliminará el dato: "<<c.pop()<<endl;
+  c.print();
 
   return 0;
 }
