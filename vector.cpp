@@ -290,6 +290,26 @@ public:
      void quick_sort(){
          quick_sort_ini(0, size-1);
      }
+     int der(int i){
+        int der = 2*(i+1);
+        return der;
+     }
+        int izq(int i){
+            int izq = 2*(i+1)-1;
+            return izq;
+        }
+
+        void print_arbol(int n, int i){
+            if(izq(i)<n){
+                print_rec( n, izq(i));
+            }
+            if( der(i)<n){
+                print_rec( n ,der(i));
+            }
+                cout<<v[i]<<" ";
+        }
+
+    
  
     
 };
