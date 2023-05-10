@@ -299,16 +299,19 @@ public:
             return izq;
         }
 
-        void print_arbol(int n, int i){
+        void print_arbol_ini(int n, int i){
             if(izq(i)<n){
-                print_rec( n, izq(i));
+                print_arbol_ini( n, izq(i));
             }
             if( der(i)<n){
-                print_rec( n ,der(i));
+                print_arbol_ini( n ,der(i));
             }
                 cout<<v[i]<<" ";
         }
-
+            
+        void print_arbol(){
+            print_arbol_ini(size,0);
+        }
     
  
     
@@ -318,13 +321,15 @@ int main()
 {
     srand(5411);
     Vector<int> v = Vector<int>();
+    /*
     int n = 10;
     for(int i=0; i<n; i++){
         v.add(rand()%100);
-    }
+    }*/
+    v.add(7);v.add(2);v.add(4);v.add(9);v.add(8);v.add(3);v.add(1);v.add(5);v.add(6);
     v.print();
-    v.quick_sort();
-    v.print();
+    v.print_arbol();
+    cout<<endl;
     
     return 0;
 }
