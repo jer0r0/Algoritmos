@@ -41,7 +41,7 @@ class Btree{
             insert_rec(k, root, nullptr);
         }
         
-        void insert_rec(T k, Node<T>* &c, Node<T> p){
+        void insert_rec(T k, Node<T>* &c, Node<T> *p){
             if(c == nullptr){
                 c = new Node<T>;
                 c->key = k;
@@ -50,15 +50,26 @@ class Btree{
                 c->parent = p;
                 _size += 1;
             }else if((c->key) > k){
-            insert_rec(k, c->left, c);
+                insert_rec(k, c->left, c);
             }else{
-            insert_rec(k, c->right, c);
+                insert_rec(k, c->right, c);
           }
         }
-};
         
-int main()
-{
-    cout<<"Welcome to Online IDE!! Happy Coding :)";
-    return 0;
-}
+        void print_rec(Node<T> *n, int level){
+            if(n != nullptr){
+                print_rec(n->left, level + 1);
+                std::cout << n->key << "(" << level << ") ";
+                print_rec(n->right, level + 1);
+            }
+        }
+        
+        void print(){
+            print_rec(root, 0);
+            cout<<endl;
+        }
+        
+        
+        
+};
+      
