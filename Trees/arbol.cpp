@@ -218,29 +218,33 @@ class Btree{
             std::cout << "predecessor: " << tt -> key << "\n";
           } 
         }
+        bool is_hoja(){
+            return (left == nullptr && right == nullptr);
+        }
         
-        /*
-        int altura_rec(Node<T>* t){
-            if(t->left == nullptr && t->right == nullptr){
-                return 0; 
+        
+        
+        int altura(Node<T>* r){
+            if(is_hoja()){
+                return 0;
             }else{
-                if(t->left != NULL && t->right == NULL){
-                    return 1 + altura_rec(t->left);
-                }else{
-                    if(t->left == NULL && t->right != NULL){
-                        return 1 + altura_rec(t->right);
-                    }else{
-                        if(t->left != NULL && t->right != NULL){
-                            return 1 + altura_rec(t->left) + altura_rec(t->right);
-                        }
+                int max = -1;
+                if(r->left != NULL){
+                    max = altura(r->left);
+                }
+                if(r->right != NULL){
+                    int temp = altura(r->right);
+                    if(max < temp){
+                        max = temp;
                     }
                 }
+                return max+1;
             }
         }
+        
         int altura(){
-            return altura_rec(root);
+            return altura(root); 
         }
-        */
         
         
 };
@@ -255,6 +259,7 @@ int main()
     mytree.insert(21);
     mytree.insert(41);
     mytree.print();
+    cout<<mytree.altura()<<endl;
 
     Btree<int> mytree2;
     
